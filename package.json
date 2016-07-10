@@ -1,0 +1,26 @@
+{
+  "name": "userauth",
+  "version": "1.0.0",
+  "description": "user auth using express-session",
+  "main": "sessionInfo.js",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "express-session": "^1.14.0",
+    "handlebars": "^4.0.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/John-Tracy/userAuth-practice.git"
+  },
+  "author": "john tracy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/John-Tracy/userAuth-practice/issues"
+  },
+  "homepage": "https://github.com/John-Tracy/userAuth-practice#readme"
+}
