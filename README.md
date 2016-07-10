@@ -1,7 +1,7 @@
 # userAuth-practice
 User authentication using nodeJS w/ npm packages express, express-session, handlebars
 
-## instructions on how to use and navigate this.
+## instructions on how to use and learn from this.
 
 
 1. download or clone file
