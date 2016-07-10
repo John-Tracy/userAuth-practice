@@ -16,17 +16,21 @@
 		<div class="col-md-8">
 			<div class="panel panel-default">
 			  <div class="panel-heading">
-			    <h3 class="panel-title">Hey ___, your logged in!</h3>
+			    <h3 class="panel-title">Hey User, your logged in!</h3>
 			  </div>
 			  <div class="panel-body">
-			    Here is all the beers you like and buddies you can drink them with!
-
+			   This would be all your personalized info from the mySQL data base.
+			   <img src="https://assets.entrepreneur.com/content/16x9/822/20150724190206-success-focus-life-achievements.jpeg">
 			  </div>
 			</div>		
 		</div>
 		<div class="col-md-4">
 			<div class="panel panel-default">
-				<button type="button" id="logout" class="btn btn-default">Log out</button>
+			<!-- this button sends user to logout page and 
+				 ivokes the logout route on the server to 
+				 terminate the session(log user out)
+				 refer to lines 77-85 in sessionInfo.js -->
+				<a href="/logout"><button type="button" id="logout" class="btn btn-default">Log out</button></a>
 			</div>
 		</div>
 	</div>

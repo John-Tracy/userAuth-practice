@@ -8,6 +8,9 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+
+	<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -26,11 +29,102 @@
 			    	<label for="password">Name</label>
 			    	<input type="password" class="form-control form-area" id="password" placeholder="Password" required>
 				</div>
+				<button type="button" id="login" class="btn btn-default">Login</button>
 				
 			</form>
 		</div>
 	</div>
 </div>
 
+		<!-- success Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Login Successful!</h4>
+	      </div>
+	      <div class="modal-body">
+	        <h2><span class="glyphicon glyphicon-check"></span></h2> <h4>Click Okay to go to the your User Page</h4>
+	      </div>
+	      <div class="modal-footer">
+	        <a href="/admin"><button type="button" class="btn btn-default" >OKAY</button></a>
+	      </div>
+	    </div>
+	  </div>
+</div>
+
+	<!-- !success modal -->
+<div class="modal fade" id="unsuccessModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Username or password were invalid</h4>
+	      </div>
+	      <div class="modal-body">
+	        <h2><span class="glyphicon glyphicon-ban-circle"></span></h2> <h4>Try Again</h4>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal" >CLOSE</button>
+	      </div>
+	    </div>
+	  </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+// happens when login button is clicked.
+	$('#login').on('click', function(){
+
+		// stores user login credential input
+		// and stores in in the userName and passCode
+		// variables
+		var userName = $('#userName').val().trim();
+		var passCode = $('#password').val().trim();
+
+		// stores current url in currentUrl variabl
+		var currentUrl = window.location.origin;
+
+		// ajax post method **sends data to server to be processed.
+		$.ajax({
+			// POST not GET!
+			method: 'POST',
+			// url where the route will be hit withing server
+			// refer to line 24 in sessionInfo.js to see where this info is sent.
+			url: currentUrl + '/loginInfo',
+			// the data that is sent to the server side(sessionInfo.js)
+			data: {
+				user: userName,
+				pass: passCode
+			},
+			// success function that recieves success or invalid
+			// response from server
+			// refer to lines 31-45 within sessionInfo.js
+			success: function(text){
+			if (text == "success"){
+				$('#successModal').modal('show');
+			}
+			else if(text == "invalid"){
+				$('#unsuccessModal').modal('show');
+
+			}
+		}
+		});
+		// clears old input from input fields
+		$('#userName').val('');
+		$('#password').val('');
+	});
+
+	
+</script>
 </body>
 </html>
+
+
+
+
+
+
